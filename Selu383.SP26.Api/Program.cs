@@ -52,11 +52,10 @@ app.UseStaticFiles();
 
 if(app.Environment.IsDevelopment())
 {
-    app.UseSpa(x=>
-    {
-        x.UseProxyToSpaDevelopmentServer("http://localhost:5173");
-    });
+    
 }
+
+//run vite separately with npm run dev, and proxy to it from here
 else
 {
     app.MapFallbackToFile("/index.html");
