@@ -21,7 +21,7 @@ jobs:
       - name: 🏗 Setup Node
         uses: actions/setup-node@v3
         with:
-          node-version: 24.x
+          node-version: 24.x 
           cache: npm
           cache-dependency-path: Selu383.SP26.Mobile/package-lock.json
 
