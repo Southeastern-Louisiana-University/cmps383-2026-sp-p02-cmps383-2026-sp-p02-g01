@@ -73,12 +73,35 @@ if (app.Environment.IsDevelopment())
 
 app.UseHttpsRedirection();
 
+
+
+app
+    .UseRouting()
+    .UseAuthentication()
+    .UseAuthorization()
+    .UseEndpoints(x=>
+    {     
+        x.MapControllers();
+});
+
 app.UseAuthentication();
 app.UseAuthorization();
 
-app.MapControllers();
 
-app.Run();
+app.UseStaticFiles();
+
+if(app.Environment.IsDevelopment())
+{
+    
+}
+
+//run vite separately with npm run dev, and proxy to it from here
+else
+{
+    app.MapFallbackToFile("/index.html");
+}
+
+    app.Run();
 
 static async Task SeedIdentityAsync(RoleManager<Role> roleManager, UserManager<User> userManager)
 {
